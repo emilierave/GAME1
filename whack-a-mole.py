@@ -29,8 +29,18 @@ pygame.display.set_caption("Whack-a-Mole")
 clock = pygame.time.Clock()
 
 # Load the images
-mole_image = pygame.image.load("mole.png").convert()
-hammer_image = pygame.image.load("hammer.png").convert()
+mole_image = pygame.image.load("mole.png").convert_alpha()
+hammer_image = pygame.image.load("hammer.png").convert_alpha()
+
+
+# Scale the images to the desired size
+mole_image = pygame.transform.scale(mole_image, (MOLE_WIDTH, MOLE_HEIGHT))
+hammer_image = pygame.transform.scale(
+    hammer_image, (HAMMER_WIDTH, HAMMER_HEIGHT))
+
+# Set the color key for the images
+mole_image.set_colorkey((0, 255, 0))
+hammer_image.set_colorkey((0, 255, 0))
 
 # Set up the font
 font = pygame.font.SysFont(None, 36)
